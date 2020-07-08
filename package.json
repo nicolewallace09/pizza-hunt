@@ -1,0 +1,24 @@
+{
+  "name": "pizza-hunt",
+  "version": "1.0.0",
+  "description": "Social networking application for pizza lovers using MongoDB.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nicolewallace09/pizza-hunt.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nicolewallace09/pizza-hunt/issues"
+  },
+  "homepage": "https://github.com/nicolewallace09/pizza-hunt#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.9.22"
+  }
+}
