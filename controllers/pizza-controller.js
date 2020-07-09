@@ -1,11 +1,19 @@
 const { Pizza } = require('../models');
-const { db } = require('../models/Pizza');
 
 const pizzaController = {
     // the functions will go in here as methods
     // get all pizzas -- find() method GET /api/pizza
     getAllPizza(req, res) {
         Pizza.find({})
+        // populate a field 
+        .populate({
+            path: 'comments',
+            // don't return this field 
+            select: '-__v'
+        })
+        .select('-__v')
+        // sort in DESC order by id
+        .sort({ _id: -1 })
         .then(dbPizzaData => res.json(dbPizzaData))
         .catch(err => {
             console.log(err);
@@ -16,6 +24,11 @@ const pizzaController = {
     // get one pizza by ID -- findOne()
     getPizzaById({ params }, res) {
         Pizza.findOne({ _id: params.id })
+        .populate({
+            path: 'comments',
+            select: '-__v'
+        })
+        .select('-__v')
         .then(dbPizzaData => {
             // if no pizza is found, send 404
             if(!dbPizzaData) {
