@@ -3,10 +3,16 @@ const moment = require('moment');
 
 const PizzaSchema = new Schema({
     pizzaName: {
-        type: String
+        type: String,
+        // can change the message to a custom message
+        required: true,
+        // works like JavaScript's trim to remove extra white space
+        trim: true
     },
     createdBy: {
-        type: String
+        type: String,
+        required: true,
+        trim: true
     },
     createdAt: {
         type: Date, 
@@ -16,6 +22,9 @@ const PizzaSchema = new Schema({
     },
     size: {
         type: String,
+        required: true,
+        // enumerable, a popular term in web development that refers to a set of data that can be iterated over (user cannot input any data note in that array)
+        enum: ['Personal', 'Small', 'Medium', 'Large', 'Extra Large'],
         default: 'Large'
     }, 
     // [] array as datatype -- you can also specify arrays 

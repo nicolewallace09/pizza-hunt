@@ -9,12 +9,16 @@ const ReplySchema = new Schema({
         default: () => new Types.ObjectId()
     },
         replyBody: {
-        type: String
+        type: String,
+        required: true,
+        trim: true
     },
         writtenBy: {
-        type: String
+        type: String,
+        required: true,
+        trim: true
     },
-    createdAt: {
+        createdAt: {
         type: Date,
         default: Date.now,
         get: createdAtVal => moment(createdAtVal).format('MMM DD, YYYY [at] hh:mm a')
@@ -28,19 +32,23 @@ const ReplySchema = new Schema({
 
 
 const CommentSchema = new Schema({
-  writtenBy: {
-    type: String
-  },
-  commentBody: {
-    type: String
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-    get: createdAtVal => moment(createdAtVal).format('MMM DD, YYYY [at] hh:mm a')
-  },
-  // populating replies field (associating replies with comments)
-  replies: [ReplySchema]
+    writtenBy: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    commentBody: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now,
+        get: createdAtVal => moment(createdAtVal).format('MMM DD, YYYY [at] hh:mm a')
+    },
+    // populating replies field (associating replies with comments)
+    replies: [ReplySchema]
 },
 {
     toJSON: {
